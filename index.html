@@ -255,7 +255,7 @@
     <div class="calendar-wrap">
       <div class="calendar-head">
         <div class="calendar-month">2026년 3월</div>
-        <div class="calendar-sub">전설아 돌잔치 · 3/15(일)</div>
+        <div class="calendar-sub">설아 생일파티 · 3/15(일)</div>
       </div>
 
       <div class="calendar">
@@ -291,7 +291,7 @@
 <div class="bottom-bar">
   <div class="bottom-inner">
     <div class="bottom-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">맨위로</div>
-    <div class="bottom-btn" onclick="navigator.share ? navigator.share({title:'전설아 돌잔치',url:location.href}) : alert('공유 기능이 지원되지 않습니다.')">공유</div>
+    <div class="bottom-btn" onclick="shareOrCopy()">공유</div>
     <div class="bottom-btn" onclick="alert('참석해주셔서 설아의 생일을 축하해 주세요.')">안내</div>
   </div>
 </div>
@@ -362,6 +362,33 @@
   });
 
   updateMusicBtn();
+
+  async function shareOrCopy(){
+  // 1) Web Share API가 되면 공유창
+  if (navigator.share) {
+    try{
+      await navigator.share({ title:'전설아 돌잔치', url: location.href });
+      return;
+    }catch(e){
+      // 사용자가 취소했거나, 카톡에서 막힌 경우 -> 복사로 넘어감
+    }
+  }
+
+  // 2) 안되면 링크 복사
+  try{
+    await navigator.clipboard.writeText(location.href);
+    alert("링크가 복사되었습니다!\n카톡 대화창에 붙여넣기 해주세요.");
+  }catch(e){
+    // 3) 구형 브라우저 복사 fallback
+    const ta = document.createElement("textarea");
+    ta.value = location.href;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    ta.remove();
+    alert("링크가 복사되었습니다!\n카톡 대화창에 붙여넣기 해주세요.");
+  }
+}
 </script>
 
 </body>
