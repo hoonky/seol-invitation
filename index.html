@@ -8,111 +8,210 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
-body{
-  margin:0;
-  background:#f5f2ea;
-  font-family:'Noto Sans KR', sans-serif;
-  color:#222;
-}
-.container{
-  max-width:480px;
-  margin:auto;
-  padding:20px 16px 120px;
-}
-.section{
-  margin:40px 0;
-  text-align:center;
-}
-.title{
-  font-family:'Noto Serif KR', serif;
-  font-size:28px;
-  font-weight:700;
-}
-.subtitle{
-  font-size:15px;
-  color:#666;
-}
-.card{
-  background:white;
-  border-radius:18px;
-  padding:22px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.06);
-}
-.info{
-  font-size:15px;
-  line-height:1.8;
-}
-.invite-text{
-  font-family:'Noto Serif KR', serif;
-  font-size:15px;
-  line-height:1.9;
-}
-.calendar{
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:6px;
-  margin-top:20px;
-  font-size:13px;
-}
-.calendar div{
-  padding:8px 0;
-}
-.highlight{
-  background:#1f2d3d;
-  color:white;
-  border-radius:10px;
-  font-weight:700;
-}
-.button{
-  display:block;
-  width:100%;
-  margin-top:12px;
-  padding:14px;
-  border-radius:14px;
-  border:1px solid #ddd;
-  background:white;
-  font-weight:600;
-  text-decoration:none;
-  color:#222;
-}
-.bottom-bar{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  display:flex;
-  justify-content:center;
-  background:linear-gradient(to top,#f5f2ea,rgba(245,242,234,0));
-  padding:10px 10px 20px;
-}
-.bottom-inner{
-  max-width:480px;
-  width:100%;
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:10px;
-}
-.bottom-btn{
-  padding:12px;
-  background:white;
-  border-radius:14px;
-  border:1px solid #ddd;
-  font-size:13px;
-  font-weight:600;
-  text-align:center;
-  cursor:pointer;
-}
+  body{
+    margin:0;
+    background:#f5f2ea;
+    font-family:'Noto Sans KR', sans-serif;
+    color:#222;
+  }
+  .container{
+    max-width:480px;
+    margin:auto;
+    padding:20px 16px 120px;
+  }
+  .section{
+    margin:40px 0;
+    text-align:center;
+  }
+  .title{
+    font-family:'Noto Serif KR', serif;
+    font-size:28px;
+    font-weight:700;
+  }
+  .subtitle{
+    font-size:15px;
+    color:#666;
+  }
+  .card{
+    background:white;
+    border-radius:18px;
+    padding:22px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.06);
+  }
+  .info{
+    font-size:15px;
+    line-height:1.8;
+  }
+  .invite-text{
+    font-family:'Noto Serif KR', serif;
+    font-size:15px;
+    line-height:1.9;
+  }
+  video{
+    width:100%;
+    border-radius:18px;
+  }
+
+  /* ==== Calendar Upgrade ==== */
+  .calendar-wrap{
+    margin-top:16px;
+    background:#ffffff;
+    border:1px solid #e9e3d8;
+    border-radius:18px;
+    padding:16px 14px 18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.05);
+  }
+  .calendar-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    margin-bottom:12px;
+  }
+  .calendar-month{
+    font-family:'Noto Serif KR', serif;
+    font-size:26px;
+    font-weight:700;
+    letter-spacing:-0.2px;
+  }
+  .calendar-sub{
+    font-size:12px;
+    color:#8a8176;
+  }
+  .calendar{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:8px;
+    font-size:13px;
+  }
+  .calendar .dow{
+    font-weight:700;
+    color:#8a8176;
+    padding:6px 0;
+  }
+  .calendar .day{
+    background:#fff;
+    border:1px solid #efe8dc;
+    border-radius:12px;
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:600;
+    color:#3a3a3a;
+  }
+  .calendar .highlight{
+    background:#1f2d3d;
+    border-color:#1f2d3d;
+    color:#fff;
+    position:relative;
+    font-weight:800;
+  }
+  .calendar .highlight::after{
+    content:"🎂";
+    position:absolute;
+    right:6px;
+    bottom:4px;
+    font-size:12px;
+    opacity:0.95;
+  }
+
+  .button{
+    display:block;
+    width:100%;
+    margin-top:12px;
+    padding:14px;
+    border-radius:14px;
+    border:1px solid #ddd;
+    background:white;
+    font-weight:600;
+    text-decoration:none;
+    color:#222;
+  }
+
+  .bottom-bar{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    display:flex;
+    justify-content:center;
+    background:linear-gradient(to top,#f5f2ea,rgba(245,242,234,0));
+    padding:10px 10px 20px;
+    z-index:10;
+  }
+  .bottom-inner{
+    max-width:480px;
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:10px;
+  }
+  .bottom-btn{
+    padding:12px;
+    background:white;
+    border-radius:14px;
+    border:1px solid #ddd;
+    font-size:13px;
+    font-weight:600;
+    text-align:center;
+    cursor:pointer;
+    user-select:none;
+  }
+
+  /* ==== Music Floating Button ==== */
+  .music-btn{
+    position:fixed;
+    right:16px;
+    top:16px;
+    z-index:20;
+    border:1px solid #ddd;
+    background:#fff;
+    border-radius:999px;
+    padding:10px 12px;
+    font-size:13px;
+    font-weight:700;
+    box-shadow:0 10px 20px rgba(0,0,0,0.06);
+    cursor:pointer;
+    user-select:none;
+  }
+
+  /* ==== Scroll Animation ==== */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .8s ease, transform .8s ease;
+    will-change: opacity, transform;
+  }
+  .reveal.show{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  @media (max-width:390px){
+    .calendar-month{font-size:24px;}
+    .calendar{gap:6px;}
+    .calendar .day{height:36px;}
+  }
 </style>
 </head>
 
 <body>
 
+<!-- 배경 음악 -->
+<audio id="bgm" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 음악 버튼 -->
+<div class="music-btn" id="musicBtn">🔇 음악 켜기</div>
+
 <div class="container">
-  <div class="section">
+
+  <div class="section reveal">
     <img src="baby.jpg" style="width:100%; border-radius:20px;">
   </div>
 
-  <div class="section">
+  <div class="section reveal">
     <div class="title">전설아</div>
     <div class="subtitle">첫 번째 생일</div>
     <div style="margin-top:12px;font-size:13px;color:#777;">
@@ -120,24 +219,25 @@ body{
     </div>
   </div>
 
-  <div class="card info">
+  <div class="card info reveal">
     <b>2026년 3월 15일 (일요일)</b><br>
     오전 12시 00분<br><br>
 
-    <b>해운대 시그니엘 부산<br> 차오란 (5층)</b><br>
+    <b>해운대 시그니엘 부산<br>차오란 (5층)</b><br>
     부산 해운대구 달맞이길 30<br><br>
-    <b>주차</b><br>
-    시그니엘 호텔 지하주차장.<br>
-    (지하주차장에서 C08 구역에 있는<br>
-    엘리베이터 이용시 5층으로 바로 연결)
-  </div>
- <div class="section">
-  <video autoplay muted loop playsinline preload="metadata" style="width:100%; border-radius:18px; margin-top:20px;">
-  <source src="video.mp4" type="video/mp4">
-  </video>
- </div>
 
-  <div class="section">
+    <b>주차</b><br>
+    시그니엘 호텔 지하주차장<br>
+    (C08 구역 엘리베이터 이용 시 5층 연결)
+  </div>
+
+  <div class="section reveal">
+    <video autoplay muted loop playsinline preload="metadata">
+      <source src="video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="section reveal">
     <div class="invite-text">
       하나의 작은 점으로 시작하여<br>
       열 달을 품고 소중히 보듬어 온 시간 끝에<br>
@@ -149,37 +249,40 @@ body{
     </div>
   </div>
 
-  <div class="section">
+  <div class="section reveal">
     <div style="font-family:'Noto Serif KR';font-size:20px;">CALENDAR</div>
 
-    <div class="calendar">
-      <div>일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div>
+    <div class="calendar-wrap">
+      <div class="calendar-head">
+        <div class="calendar-month">2026년 3월</div>
+        <div class="calendar-sub">전설아 돌잔치 · 3/15(일)</div>
+      </div>
 
-      <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-      <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
-      <div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div>
-      <div class="highlight">15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div><div>21</div>
-      <div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div><div>28</div>
-      <div>29</div><div>30</div><div>31</div>
+      <div class="calendar">
+        <div class="dow">일</div><div class="dow">월</div><div class="dow">화</div><div class="dow">수</div><div class="dow">목</div><div class="dow">금</div><div class="dow">토</div>
+
+        <div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div><div class="day">5</div><div class="day">6</div><div class="day">7</div>
+        <div class="day">8</div><div class="day">9</div><div class="day">10</div><div class="day">11</div><div class="day">12</div><div class="day">13</div><div class="day">14</div>
+        <div class="day highlight">15</div><div class="day">16</div><div class="day">17</div><div class="day">18</div><div class="day">19</div><div class="day">20</div><div class="day">21</div>
+        <div class="day">22</div><div class="day">23</div><div class="day">24</div><div class="day">25</div><div class="day">26</div><div class="day">27</div><div class="day">28</div>
+        <div class="day">29</div><div class="day">30</div><div class="day">31</div>
+      </div>
     </div>
   </div>
 
-  <div class="section">
+  <div class="section reveal">
     <div style="font-family:'Noto Serif KR';font-size:20px;">LOCATION</div>
 
-    <a class="button" target="_blank"
-       href="https://map.kakao.com/link/search/차오란">
-       카카오맵 열기
+    <a class="button" target="_blank" href="https://map.kakao.com/link/search/시그니엘부산%20차오란">
+      카카오맵 열기
     </a>
 
-    <a class="button" target="_blank"
-       href="https://map.naver.com/v5/search/차오란">
-       네이버지도 열기
+    <a class="button" target="_blank" href="https://map.naver.com/v5/search/시그니엘부산%20차오란">
+      네이버지도 열기
     </a>
 
-    <a class="button" target="_blank"
-       href="https://www.google.com/maps/search/?api=1&query=차오란">
-       구글맵 열기
+    <a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=시그니엘부산%20차오란">
+      구글맵 열기
     </a>
   </div>
 
@@ -192,6 +295,74 @@ body{
     <div class="bottom-btn" onclick="alert('참석해주셔서 설아의 생일을 축하해 주세요.')">안내</div>
   </div>
 </div>
+
+<script>
+  // ===== Scroll reveal =====
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("show");
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+  // ===== BGM autoplay try + fallback =====
+  const bgm = document.getElementById("bgm");
+  const musicBtn = document.getElementById("musicBtn");
+  let isPlaying = false;
+
+  function updateMusicBtn(){
+    musicBtn.textContent = isPlaying ? "🔊 음악 끄기" : "🔇 음악 켜기";
+  }
+
+  async function tryPlay(){
+    try{
+      await bgm.play();
+      isPlaying = true;
+      updateMusicBtn();
+    }catch(e){
+      // 자동재생 차단: 첫 사용자 액션에서 재생
+      isPlaying = false;
+      updateMusicBtn();
+    }
+  }
+
+  window.addEventListener("load", () => {
+    tryPlay();
+  });
+
+  // 첫 터치에서 재생 시도(자동재생이 막힌 경우 대비)
+  document.addEventListener("click", () => {
+    if(!isPlaying){
+      bgm.play().then(()=>{
+        isPlaying = true;
+        updateMusicBtn();
+      }).catch(()=>{});
+    }
+  }, { once: true });
+
+  // 음악 ON/OFF 버튼
+  musicBtn.addEventListener("click", async (e) => {
+    e.stopPropagation();
+    if(isPlaying){
+      bgm.pause();
+      isPlaying = false;
+      updateMusicBtn();
+    }else{
+      try{
+        await bgm.play();
+        isPlaying = true;
+        updateMusicBtn();
+      }catch(e2){
+        alert("이 기기에서는 자동재생이 제한될 수 있어요. 화면을 한 번 터치하면 재생됩니다.");
+      }
+    }
+  });
+
+  updateMusicBtn();
+</script>
 
 </body>
 </html>
